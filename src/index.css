@@ -1,13 +1,143 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* ------------------------------------------------------ */
+/*                          Fonts                         */
+/* ------------------------------------------------------ */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&display=swap');
+
+/* ------------------------------------------------------ */
+/*                    Custom Properties                   */
+/* ------------------------------------------------------ */
+:root {
+    /* Font Weights */
+    --fw-normal: 500;
+    --fw-bold: 600;
+
+    /* Border Radii */
+    --br-pill: 100vmax;
+    --br-md: .5rem;
+
+    /* Colors */
+    --clr-violet: hsl(263, 55%, 52%);
+    --clr-violet-light: hsl(264, 82%, 70%);
+    --clr-gray-green: hsl(217, 19%, 35%);
+    --clr-black-blue: hsl(219, 29%, 14%);
+    --clr-body-bg: hsl(210, 46%, 95%);
+    --clr-gray: hsl(0, 0%, 81%);
+    --clr-white: hsl(0, 0%, 100%);
+    --clr-box-shadow: hsla(219, 29%, 14%, .2);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* ------------------------------------------------------ */
+/*                Resets and Global Styles                */
+/* ------------------------------------------------------ */
+* { box-sizing: border-box; }
+
+.sr-only {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+body, h2, p { margin: 0; }
+
+body {
+    display: grid;
+    min-height: 100vh;
+    font: var(--fw-normal) .8125rem/1.35 'Barlow Semi Condensed', sans-serif;
+    background: var(--clr-body-bg);
+    padding: 4.4375rem 1.5rem;
+}
+
+main {
+    display: grid;
+    gap: 1.5rem 1.875rem;
+    max-width: 51.5625rem;
+    margin: auto;
+}
+
+/* ------------------------------------------------------ */
+/*                       Testimonial                      */
+/* ------------------------------------------------------ */
+.testimonial {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0 1.0625rem;
+    max-width: 33.75rem;
+    border-radius: var(--br-md);
+    padding: 1.5rem 1.9375rem 2rem 2rem;
+    margin: 0 auto;
+    box-shadow: 0 2rem 2rem -2rem var(--clr-box-shadow);
+    color: var(--clr-gray-green);
+    background: var(--clr-white);
+}
+
+.profile {
+    width: 1.75rem;
+    border-radius: var(--br-pill);
+}
+
+.name {
+    font-size: .8125rem;
+    font-weight: inherit;
+}
+
+.status {
+    font-size: .6875rem;
+    opacity: .5;
+}
+
+.commendation {
+    font: var(--fw-bold) 1.1875rem/1.275 'Barlow Semi Condensed', sans-serif;
+    letter-spacing: .0215em;
+    margin: 1rem 0 .9375rem;
+}
+
+.quote {
+    line-height: 1.38;
+    opacity: .7;
+}
+
+/* --------------- Testimonial Font Colors -------------- */
+.testimonial-0,
+.testimonial-1,
+.testimonial-3 { color: var(--clr-white) }
+
+/* ------------ Testimonial Background Colors ----------- */
+.testimonial-0 {
+    background: url('images/bg-pattern-quotation.svg') no-repeat top right 18.25%
+                var(--clr-violet);
+}
+
+.testimonial-1 { background: var(--clr-gray-green); }
+
+.testimonial-3 { background: var(--clr-black-blue); }
+
+/* ----------- Testimonial Profile Box Shadow ----------- */
+.testimonial-0 > .profile { box-shadow: 0 0 0 .125rem var(--clr-violet-light) }
+
+.testimonial-3 > .profile { box-shadow: 0 0 0 .125rem var(--clr-violet) }
+
+/* ------------------------------------------------------ */
+/*               Medium Viewport Width Grid               */
+/* ------------------------------------------------------ */
+@media only screen and (min-width: 60em) {
+    main { grid-template-columns: repeat(3, 1fr); }
+
+    .testimonial-0 { grid-column: 1 / span 2; }
+    .testimonial-1 { grid-column: 3 / span 1; }
+    .testimonial-2 { grid-column: 1 / span 1; }
+    .testimonial-3 { grid-column: 2 / span 2; }
+    .testimonial-4 { grid-column: 1 / span 2; }
+}
+
+/* ------------------------------------------------------ */
+/*                Large Viewport Width Grid               */
+/* ------------------------------------------------------ */
+@media only screen and (min-width: 80em) {
+    main {
+        grid-template-columns: repeat(4, 1fr);
+        max-width: 69.375rem;
+    }
+
+    .testimonial-4 { grid-area: 1 / 4 / 3 / -1; }
 }
