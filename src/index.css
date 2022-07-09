@@ -97,6 +97,14 @@ main {
     opacity: .7;
 }
 
+.quote::before {
+    content: open-quote ' ';
+}
+
+.quote::after {
+    content: ' ' close-quote;
+}
+
 /* --------------- Testimonial Font Colors -------------- */
 .testimonial-0,
 .testimonial-1,
